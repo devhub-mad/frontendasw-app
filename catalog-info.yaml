@@ -1,0 +1,44 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: frontendasw-app
+  annotations:
+    argocd/app-name: frontendasw-app
+    backstage.io/kubernetes-id: frontendasw-app
+    backstage.io/kubernetes-namespace: devhub
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/frontendasw-app
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - frontend
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-gjtwp.gjtwp.sandbox2212.opentlc.com/dev-pipelines/ns/devhub/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-gjtwp.gjtwp.sandbox2212.opentlc.com/k8s/ns/devhub/deployments/frontendasw-app
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-gjtwp.gjtwp.sandbox2212.opentlc.com/#https://github.com/devhub-mad/frontendasw-app?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-frontendasw-app
+  providesApis:
+    - gateway-api-devhub
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-frontendasw-app
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+spec:
+  owner: "user:default/varodrig"
+
